@@ -48,4 +48,25 @@ int main()
     std::cout << "Here is mat.minCoeff():  " << mat.minCoeff() << std::endl;
     std::cout << "Here is mat.maxCoeff():  " << mat.maxCoeff() << std::endl;
     std::cout << "Here is mat.trace():     " << mat.trace() << std::endl;
+
+    Eigen::ArrayXXf aa(2, 2);
+
+    aa << 1, 2,
+        3, 4;
+
+    std::cout << "(a > 0).all()   = " << (aa > 0).all() << std::endl;
+    std::cout << "(a > 0).any()   = " << (aa > 0).any() << std::endl;
+    std::cout << "(a > 0).count() = " << (aa > 0).count() << std::endl;
+    std::cout << std::endl;
+    std::cout << "(a > 2).all()   = " << (aa > 2).all() << std::endl;
+    std::cout << "(a > 2).any()   = " << (aa > 2).any() << std::endl;
+    std::cout << "(a > 2).count() = " << (aa > 2).count() << std::endl;
+
+    Eigen::ArrayXXi A = Eigen::ArrayXXi::Random(4, 4).abs();
+    std::cout << "Here is the initial matrix A:\n"
+         << A << "\n";
+    for (auto row : A.rowwise())
+        std::sort(row.begin(), row.end());
+    std::cout << "Here is the sorted matrix A:\n"
+         << A << "\n";
 }
